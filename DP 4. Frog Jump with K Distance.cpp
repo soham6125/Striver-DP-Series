@@ -81,10 +81,6 @@ ll lcm(ll x, ll y)
     return (res * y);
 }
 // ll nCr(ll n,ll r){ll ans=fact[n]; ans*=mod_inv(fact[n-r]);ans%=mod; ans*=mod_inv(fact[r]);ans%=mod; return ans;}
-
-const ll dx[] = {-1, 1, 0, 0, 1, 1, -1, -1};
-const ll dy[] = {0, 0, 1, -1, -1, 1, -1, 1};
-
 signed main()
 {
     quick;
