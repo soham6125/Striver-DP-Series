@@ -21,3 +21,25 @@ int knapsack(vector<int> w, vector<int> val, int n, int W)
     }
     return dp[n][W];
 }
+
+// Recursively
+int helper(vector<vector<int>> &dp, vector<int> &w, vector<int> &val, int i, int sum)
+{
+    if (i >= w.size())
+        return 0;
+    if (sum == 0)
+        return 0;
+    if (dp[i][sum] != -1)
+        return dp[i][sum];
+    int res1 = helper(dp, w, val, i + 1, sum);
+    int res2 = 0;
+    if (w[i] <= sum)
+        res2 = val[i] + helper(dp, w, val, i + 1, sum - w[i]);
+    return dp[i][sum] = max(res1, res2);
+}
+
+int knapsack(vector<int> w, vector<int> val, int n, int W)
+{
+    vector<vector<int>> dp(n + 1, vector<int>(W + 1, -1));
+    return helper(dp, w, val, 0, W);
+}
